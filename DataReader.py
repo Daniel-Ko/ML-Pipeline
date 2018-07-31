@@ -1,4 +1,3 @@
-from ThyroidInstance import ThyroidInstance
 from numpy import array
 
 train_attrib = []
