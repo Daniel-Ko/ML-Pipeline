@@ -1,7 +1,9 @@
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeClassifier, export_graphviz
 
 
 def result(train_data: tuple, test_data: tuple, verbose: bool):
+    if verbose:
+        print(">>>>>>>>>>>>>>>>>>>>>>>SYMBOLIST<<<<<<<<<<<<<<<<<<<<<<<<<<")
     train_atts, train_targets = train_data
     test_atts, test_targets = test_data
 
@@ -14,5 +16,10 @@ def result(train_data: tuple, test_data: tuple, verbose: bool):
         if predict == target:
             i += 1
 
-    print("DTREE: {}/{} correct, {:.2f}%".format(i,
-                                                 test_atts.shape[0], 100*i/test_atts.shape[0]))
+    if verbose:
+        print(
+            f"FeatImportance: {clf.feature_importances_}, Features: {clf.n_features_}, Outputs:{clf.n_outputs_}")
+
+        # To export tree data
+        # export_graphviz(clf, class_names=['1', '2', '3'])
+    return i

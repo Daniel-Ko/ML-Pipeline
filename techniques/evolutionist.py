@@ -2,6 +2,9 @@ from gplearn.genetic import SymbolicRegressor
 
 
 def result(train_data: tuple, test_data: tuple, verbose: bool):
+    if verbose:
+        print(">>>>>>>>>>>>>>>>>>>>>>>EVOLUTIONIST<<<<<<<<<<<<<<<<<<<<<<<<<<")
+
     train_atts, train_targets = train_data
     test_atts, test_targets = test_data
 
@@ -15,7 +18,6 @@ def result(train_data: tuple, test_data: tuple, verbose: bool):
             i += 1
 
     if verbose:
-        print(F"FINAL PROGRAM: {clf._program}")
+        print(F"\tFINAL PROGRAM: {clf._program}")
 
-    print("EVO: {}/{} correct, {:.2f}%".format(i,
-                                               test_atts.shape[0], 100*i/test_atts.shape[0]))
+    return i

@@ -2,6 +2,8 @@ from sklearn.svm import SVC
 
 
 def result(train_data: tuple, test_data: tuple, verbose: bool):
+    if verbose:
+        print(">>>>>>>>>>>>>>>>>>>>>>>ANALOGIST<<<<<<<<<<<<<<<<<<<<<<<<<<")
     train_atts, train_targets = train_data
     test_atts, test_targets = test_data
 
@@ -14,5 +16,4 @@ def result(train_data: tuple, test_data: tuple, verbose: bool):
         if predict == target:
             i += 1
 
-    print("SUPPVEC: {}/{} correct, {:.2f}%".format(i,
-                                                   test_atts.shape[0], 100*i/test_atts.shape[0]))
+    return i

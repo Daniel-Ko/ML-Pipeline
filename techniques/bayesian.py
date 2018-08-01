@@ -2,6 +2,8 @@ from sklearn.naive_bayes import GaussianNB
 
 
 def result(train_data: tuple, test_data: tuple, verbose: bool):
+    if verbose:
+        print(">>>>>>>>>>>>>>>>>>>>>>>BAYESIAN<<<<<<<<<<<<<<<<<<<<<<<<<<")
     train_atts, train_targets = train_data
     test_atts, test_targets = test_data
 
@@ -14,5 +16,8 @@ def result(train_data: tuple, test_data: tuple, verbose: bool):
         if predict == target:
             i += 1
 
-    print("NAIVEBAYES: {}/{} correct, {:0.2f}%".format(i,
-                                                       test_atts.shape[0], 100*i/test_atts.shape[0]))
+    if verbose:
+        print(
+            f"ClassProbs: {clf.class_prior_}, ClassCounts: {clf.class_count_}")
+
+    return i
